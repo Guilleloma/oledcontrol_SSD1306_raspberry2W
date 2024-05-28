@@ -1,4 +1,4 @@
-# oledcontrol_SSD1306_raspberry2W
+# Oled_SSD1306_raspberry2W
 
 Screen: Adafruit Oled 0.96inch  (SSD1306) 
 
