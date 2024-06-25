@@ -41,7 +41,7 @@ class OledFaceController:
         return Image.open(image_path).convert('1').resize((128, 32))
 
     def move_eyes_randomly(self, interval_open, interval_blink):
-        eye_sequence = ['open', 'half_open', 'half_closed', 'closed', 'half_closed', 'half_open']
+        eye_sequence = ['half_open', 'half_closed', 'closed', 'half_closed', 'half_open','open']
         while True:
             open_interval = random.uniform(interval_open - 1, interval_open + 1)
             for eye_state in eye_sequence:
@@ -71,6 +71,18 @@ class OledFaceController:
         display_thread = threading.Thread(target=self.display_images)
         display_thread.daemon = True
         display_thread.start()
+
+    def display_wtf_image(self):
+        """Carga y muestra una imagen de 'wtf.bmp' de tamaño 128x64."""
+        wtf_image = self.load_image('wtf.bmp').resize((128, 64))
+        self.disp.image(wtf_image)
+        self.disp.display()
+
+    def display_happy_image(self):
+        # Mostrar la imagen "happy.bmp" en la pantalla OLED
+        happy_image = self.load_image('happy.bmp').resize((128, 64))
+        self.disp.image(happy_image)
+        self.disp.display()
 
     def cleanup(self):
         self.disp.clear()
